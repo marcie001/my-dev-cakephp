@@ -10,5 +10,7 @@ WORKDIR /workspace
 RUN curl -s https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
 RUN echo "umask 0002" >> /etc/bash.bashrc
+COPY entrypoint.sh /usr/local/bin
 
 EXPOSE 8765
+ENTRYPOINT ["entrypoint.sh"]
