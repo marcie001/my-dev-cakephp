@@ -1,9 +1,9 @@
 FROM php:7.1.12-cli
 
 RUN apt-get update && apt-get install -y \
-    git zip unzip libicu52 libicu-dev \
+    git zip unzip libicu52 libicu-dev libpng12-dev\
     --no-install-recommends && rm -r /var/lib/apt/lists/*
-RUN docker-php-ext-install intl pdo_mysql
+RUN docker-php-ext-install intl pdo_mysql gd exif
 RUN mkdir /var/www && chown www-data:www-data /var/www && chmod 775 /var/www \
     && mkdir /workspace && chown www-data:www-data /workspace && chmod 775 /workspace
 WORKDIR /workspace
